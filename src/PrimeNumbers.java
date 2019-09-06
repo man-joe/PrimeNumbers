@@ -49,19 +49,23 @@ public class PrimeNumbers {
             randNum = sc.nextInt();
         }
 
-        for(int i = 1; i <= randNum; i++) {
-            for (int j = 1; j <= i; j++) {
-                if (((Math.pow(j, i) - j) % i != 0)) {
-                    prime = false;
-                    break;
-                }else
-                    prime = true;
-            }
+        for(int j = 1; j <= randNum; j++){
+            int count = 0;
+            prime = true;
 
-            if(!prime || i ==1)
-                System.out.println(i + " is not a prime number.");
-            else if (prime)
-                System.out.println(i + " is a prime number.");
+            for(int i = 1; i <= j; i++) {
+                if(j % i == 0) {
+                    count++;
+                }
+            }
+            if(count != 2)
+                prime = false;
+
+            if(!prime){
+                System.out.println(j + " is not a prime number");
+            } else if(prime) {
+                System.out.println(j + " is a prime number");
+            }
         }
     }
 }
